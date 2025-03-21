@@ -1,0 +1,6 @@
+---
+- name: Install and Configure Prometheus
+  hosts: aws_ec2
+  become: yes
+  roles:
+    - role: roles
