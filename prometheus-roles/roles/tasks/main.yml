@@ -160,3 +160,32 @@
     mode: '0644'
   notify: Restart Prometheus
 
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Create .htpasswd file for authentication
+  shell: echo "{{ prometheus_user }}:$(openssl passwd -crypt {{ prometheus_password }})" > /etc/nginx/.htpasswd
+  args:
+    creates: /etc/nginx/.htpasswd
+
+- name: Deploy Nginx config for Prometheus
+  template:
+    src: nginx_prometheus.j2
+    dest: /etc/nginx/sites-available/prometheus
+  notify: Restart Nginx
+
+- name: Enable Prometheus Nginx site
+  file:
+    src: /etc/nginx/sites-available/prometheus
+    dest: /etc/nginx/sites-enabled/prometheus
+    state: link
+  notify: Restart Nginx
+
+- name: Restart Nginx
+  systemd:
+    name: nginx
+    state: restarted
+
