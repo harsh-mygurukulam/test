@@ -160,7 +160,7 @@
     mode: '0644'
   notify: Restart Prometheus
 
-
+- name: Install Nginx
   apt:
     name: nginx
     state: present
