@@ -25,7 +25,7 @@ pipeline {
                             sh 'git pull origin main'
                         }
                     } else {
-                        git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/harsh-mygurukulam/prom.git'
+                        git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/harsh-mygurukulam/test.git'
                     }
                 }
             }
