@@ -160,6 +160,11 @@
     mode: '0644'
   notify: Restart Prometheus
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e349a55c8aad19500b3ca5c76a1a657fc0b9a35a
 - name: Install Nginx
   apt:
     name: nginx
@@ -188,4 +193,7 @@
   systemd:
     name: nginx
     state: restarted
+<<<<<<< HEAD
 
+=======
+>>>>>>> e349a55c8aad19500b3ca5c76a1a657fc0b9a35a
